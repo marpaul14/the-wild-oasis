@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import GlobalStyles from "./styles/GlobalStyles";
 import Dashboard from "./pages/Dashboard";
 import Bookings from "./pages/Bookings";
 import Cabins from "./pages/Cabins";
@@ -10,32 +11,38 @@ import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="dashboard" element={<Dashboard />} />
-      </Routes>
-      <Routes>
-        <Route path="bookings" element={<Bookings />} />
-      </Routes>
-      <Routes>
-        <Route path="cabins" element={<Cabins />} />
-      </Routes>
-      <Routes>
-        <Route path="users" element={<Users />} />
-      </Routes>
-      <Routes>
-        <Route path="settings" element={<Settings />} />
-      </Routes>
-      <Routes>
-        <Route path="account" element={<Account />} />
-      </Routes>
-      <Routes>
-        <Route path="login" element={<Login />} />
-      </Routes>
-      <Routes>
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <GlobalStyles />
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Navigate replace to="dashboard" />} />
+        </Routes>
+        <Routes>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Routes>
+        <Routes>
+          <Route path="bookings" element={<Bookings />} />
+        </Routes>
+        <Routes>
+          <Route path="cabins" element={<Cabins />} />
+        </Routes>
+        <Routes>
+          <Route path="users" element={<Users />} />
+        </Routes>
+        <Routes>
+          <Route path="settings" element={<Settings />} />
+        </Routes>
+        <Routes>
+          <Route path="account" element={<Account />} />
+        </Routes>
+        <Routes>
+          <Route path="login" element={<Login />} />
+        </Routes>
+        <Routes>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
